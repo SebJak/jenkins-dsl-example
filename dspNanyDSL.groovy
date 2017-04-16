@@ -1,4 +1,3 @@
-
 job('DSP-Nany') {
   scm {
         git {
@@ -13,6 +12,10 @@ job('DSP-Nany') {
         scm('H/15 * * * *')
     }
     steps {
-        gradle('-p nany-server test')
+      gradle{
+        useWrapper(false)
+        gradleName('Gradle 3.5')
+        tasks('test')
+        switches('-p nany-server')}
     }
 }
